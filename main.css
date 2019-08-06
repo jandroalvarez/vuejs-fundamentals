@@ -1,0 +1,11 @@
+.strikeout {
+    text-decoration: black line-through;
+}
+
+.priority {
+    color: red;
+}
+
+li {
+    cursor: pointer;
+}

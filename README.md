@@ -1,2 +1,3 @@
 # vuejs-fundamentals
-Vue.js fundamentals tutorials from vueschool.io
+Code for Vue.js fundamentals tutorial from vueschool.io.
+Free course videos: [VueJS Fundamentals](https://vueschool.io/courses/vuejs-fundamentals)

@@ -4,14 +4,19 @@
     </head>
     <body>
         <div id="app">
-            <h1>{{ header.toLocaleUpperCase() }}</h1>
-            <div id="add-item-form">
+            <div class="header">
+                <h1>{{ header.toLocaleUpperCase() }}</h1>
+                <button v-if="state == 'default'" class="btn btn-primary" @click="changeState('edit')">Add Item</button>
+                <button v-else class="btn btn-cancel" @click="changeState('default')">Cancel</button>
+            </div>
+            <div id="add-item-form" v-if="state == 'edit'">
                 <input type="text" placeholder="Add a new item" v-model="newItem" @keyup.enter="saveItem"/>
                 <button class="btn btn-primary" type="submit" @click="saveItem">Save</button>
             </div>
             <ul>
                 <li v-for="item in items">{{item}}</li>
             </ul>
+            <p v-if="items.length === 0">No items</p>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
         <script>
@@ -20,17 +25,19 @@
             {
                 el:"#app",
                 data: {
+                    state: 'default',
                     header: 'Mi lista de la compra',
                     newItem: '',
-                    items: [
-                        "Manzanas",
-                        "Brócoli",
-                        "Plátanos"
-                        ]
+                    items: []
                 },
                 methods:{
-                    saveItem: function(){
+                    saveItem: function() {
                         this.items.push(this.newItem);
+                        this.newItem = "";
+                    },
+                    changeState: function(newState) {
+                        this.state = newState;
+                        this.newItem = '';
                     }
                 }
             });
